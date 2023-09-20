@@ -1,19 +1,31 @@
-// Initialize variables
+// Initializes the  variables
 let isDrawing = false;
 let currentColor = "black";
 
-// Function to handle mouse down event
+let colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+let index = 0;
+
+function changeBackgroundColor() {
+  // changes the entire background color.
+
+  document.body.style.backgroundColor = colors[index];
+  index = (index + 1) % colors.length;
+}
+
+setInterval(changeBackgroundColor, 5000);
+
+// Handles mouse down 
 function handleMouseDown(event) {
   isDrawing = true;
   handleMouseOver(event); // Color the square immediately
 }
 
-// Function to handle mouse up event
+// Handles mouse up 
 function handleMouseUp() {
   isDrawing = false;
 }
 
-// Function to handle mouseover event
+// Handles  mouse over button
 function handleMouseOver(event) {
   if (isDrawing) {
     if (currentColor === "rainbow") {
@@ -26,14 +38,14 @@ function handleMouseOver(event) {
   }
 }
 
-// Function to toggle color picker visibility
+// Toggles color picker visibility
 function toggleColorPicker() {
   const colorPicker = document.getElementById("color-picker");
   colorPicker.style.display =
     colorPicker.style.display === "none" ? "block" : "none";
 }
 
-// Function to set active button
+// Set active button
 function setActiveButton(buttonId) {
   const buttons = document.querySelectorAll("#sidebar button");
   buttons.forEach((btn) => btn.classList.remove("active"));
@@ -41,7 +53,7 @@ function setActiveButton(buttonId) {
   button.classList.add("active");
 }
 
-// Function to update and display grid size
+// Updates and displays grid size
 function handleGridSizeChange(event) {
   const newSize = event.target.value;
   document.getElementById(
@@ -50,7 +62,7 @@ function handleGridSizeChange(event) {
   createGrid(newSize);
 }
 
-// Function to create a grid
+// Creation of grid
 function createGrid(size) {
   const container = document.getElementById("grid-container");
   container.innerHTML = ""; // Clear existing grid
@@ -66,19 +78,19 @@ function createGrid(size) {
   }
 }
 
-// Function to set rainbow mode
+// Rainbow color mode
 function setRainbowMode() {
   currentColor = "rainbow";
   setActiveButton("rainbow-mode");
 }
 
-// Function to set eraser mode
+// Eraser button action
 function setEraser() {
   currentColor = "white";
   setActiveButton("eraser");
 }
 
-// Function to delete the sketch
+// Delete sketch button action 
 function deleteSketch() {
   createGrid(16); // Reset to default 16x16 grid
   setActiveButton("delete");
@@ -88,16 +100,15 @@ function handleColorPicker(event) {
   currentColor = event.target.value;
 }
 
-// Attach mousedown and mouseup event listeners to the grid container
+// Musedown and mouseup to the grid container
 const container = document.getElementById("grid-container");
 container.addEventListener("mousedown", handleMouseDown);
 container.addEventListener("mouseup", handleMouseUp);
 
-// Initial grid creation
+// Initial grid 
 createGrid(16);
 
-// Button events
-// Button event for Color Mode
+
 // Button event for Color Mode
 document.getElementById("color-mode").addEventListener("click", function () {
   toggleColorPicker();
@@ -110,12 +121,12 @@ document
 document.getElementById("eraser").addEventListener("click", setEraser);
 document.getElementById("delete").addEventListener("click", deleteSketch);
 
-// Attach event listener to the grid size slider
+// Attaches event listener to the grid size slider
 document
   .getElementById("grid-size-slider")
   .addEventListener("input", handleGridSizeChange);
 
-// Listen for changes on the color picker
+// Changes on the color picker
 document
   .getElementById("color-picker")
   .addEventListener("input", handleColorPicker);
