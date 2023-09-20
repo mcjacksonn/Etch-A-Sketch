@@ -1,15 +1,56 @@
-#grid-container {
-  width: 320px;
-  height: 320px;
-  display: grid;
-  grid-template-columns: repeat(16, 20px);
-  grid-template-rows: repeat(16, 20px);
-  gap: 0px 0px;
-  overflow: hidden;
+/* Make the entire page background black */
+body {
+  background-color: black;
+  color: white; /* For any text to be visible on a black background */
+  margin: 0;
+  padding: 0;
 }
 
+#title {
+  text-align: center; /* Center the text */
+  color: #7fdbff; /* White text */
+  margin-top: 20px; /* Add some top margin for spacing */
+  font-size: 6em; /* Increase the font size */
+}
+
+/* Style for the sidebar */
+#sidebar {
+  background-color: grey; /* Grey background */
+  float: left; /* Align it to the left */
+  height: 100vh; /* Full height */
+  display: flex;
+  flex-direction: column; /* Stack the buttons vertically */
+  align-items: center; /* Center the buttons */
+  padding: 20px;
+}
+
+/* Style for the buttons */
+button {
+  margin: 10px; /* Space between buttons */
+  border: 2px solid #7fdbff; /* Baby blue border */
+  background-color: #333; /* Dark background for contrast */
+  color: white; /* White text */
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Style for the grid container */
+#grid-container {
+  background-color: white;
+  width: 400px; /* Fixed width, but can be anything you like */
+  height: 400px; /* Fixed height, but can be anything you like */
+  display: grid;
+  gap: 0px 0px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Style for the grid squares */
 .grid-square {
-  width: 20px;
-  height: 20px;
   border: 1px solid #ccc;
+  box-sizing: border-box; /* To make sure the border is included in the width */
 }
