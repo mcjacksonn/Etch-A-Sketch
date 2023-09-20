@@ -1,6 +1,16 @@
-/* Make the entire page background black */
+/* Animate the entire page background with a rainbow wave */
+@keyframes rainbowBackground {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 body {
-  background-color: black;
+  transition: background-color 5s ease-in-out;
   color: white;
   margin: 0;
   padding: 0;
@@ -17,21 +27,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 66vh;
 }
 
 #sidebar {
   background-color: grey;
   width: 200px;
-  height: 400px;
+  height: calc(66vh - 40px);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   padding: 20px;
   margin-right: 20px;
 }
 
 button {
+  flex-grow: 1;
   margin: 10px;
   border: 2px solid #7fdbff;
   background-color: #333;
@@ -45,10 +56,15 @@ button.active {
   border-color: #00bcd4;
 }
 
+button:hover {
+  background-color: #555;
+  border-color: #00bcd4;
+}
+
 #grid-container {
   background-color: white;
-  width: 400px;
-  height: 400px;
+  width: calc(66vh - 40px);
+  height: calc(66vh - 40px);
   display: grid;
   gap: 0px 0px;
 }
